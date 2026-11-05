@@ -8,7 +8,7 @@ import './constants.dart';
 void main() {
   runApp(
     MaterialApp(
-      title: 'Tic-Tac-Toe',
+      title: 'Tic-Tac-Toe - 2466885 v1.1',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(
@@ -41,6 +41,7 @@ class _HomePageState extends State<HomePage> {
   late ThemeData theme;
   late ConfettiController _controllerCenter;
   bool isDarkTheme = false;
+  int round = 1;
 
   @override
   void initState() {
@@ -164,6 +165,7 @@ class _HomePageState extends State<HomePage> {
             tooltip: 'Restart Game',
             onPressed: () {
               setState(() {
+                round++;
                 _initialize();
               });
             },
@@ -184,6 +186,16 @@ class _HomePageState extends State<HomePage> {
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 16),
+                      child: Text(
+                        'Round: $round',
+                        style: TextStyle(
+                          fontSize: 22,
+                          color: isDarkTheme ? Colors.white : Colors.black,
+                        ),
+                      ),
+                    ),
                     SizedBox(
                       width: deviceWidth < deviceHeight
                           ? deviceWidth * 0.7
